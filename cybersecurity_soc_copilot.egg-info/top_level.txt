@@ -1,5 +1,0 @@
-agents
-app
-mcp_servers
-rag
-reports
