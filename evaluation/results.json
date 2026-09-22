@@ -1,0 +1,37 @@
+{
+  "sample_size": 3,
+  "metrics": {
+    "type_correct": 1.0,
+    "severity_correct": 1.0,
+    "mitre_correct": 1.0,
+    "has_citations": 1.0,
+    "all_actions_gated": 1.0
+  },
+  "cases": [
+    {
+      "alert_id": "ALT-001",
+      "type_correct": true,
+      "severity_correct": true,
+      "mitre_correct": true,
+      "has_citations": true,
+      "all_actions_gated": true
+    },
+    {
+      "alert_id": "ALT-002",
+      "type_correct": true,
+      "severity_correct": true,
+      "mitre_correct": true,
+      "has_citations": true,
+      "all_actions_gated": true
+    },
+    {
+      "alert_id": "ALT-003",
+      "type_correct": true,
+      "severity_correct": true,
+      "mitre_correct": true,
+      "has_citations": true,
+      "all_actions_gated": true
+    }
+  ],
+  "warning": "Small synthetic test set; results demonstrate instrumentation, not production efficacy."
+}

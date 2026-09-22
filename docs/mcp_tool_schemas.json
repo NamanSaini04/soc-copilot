@@ -1,0 +1,37 @@
+{
+  "servers": [
+    {
+      "name": "soc-logs-readonly",
+      "scope": "synthetic:logs:read",
+      "tools": [{
+        "name": "search_activity",
+        "description": "Return bounded synthetic events for an exact alert ID.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {"alert_id": {"type": "string", "pattern": "^ALT-[0-9]{3,}$"}, "limit": {"type": "integer", "minimum": 1, "maximum": 500}},
+          "required": ["alert_id"], "additionalProperties": false
+        },
+        "sideEffect": "none"
+      }]
+    },
+    {
+      "name": "soc-threat-intel-approved",
+      "scope": "synthetic:cti:read",
+      "tools": [{
+        "name": "lookup_indicator",
+        "description": "Look up one indicator in the approved synthetic fixture.",
+        "inputSchema": {"type": "object", "properties": {"indicator": {"type": "string", "maxLength": 512}}, "required": ["indicator"], "additionalProperties": false},
+        "sideEffect": "none"
+      }]
+    },
+    {
+      "name": "soc-incidents-controlled",
+      "scope": "synthetic:incidents:read,drafts:write",
+      "tools": [
+        {"name": "retrieve_incident", "inputSchema": {"type": "object", "properties": {"incident_id": {"type": "string", "pattern": "^INC-[0-9]{3,}$"}}, "required": ["incident_id"], "additionalProperties": false}, "sideEffect": "none"},
+        {"name": "create_draft_ticket", "inputSchema": {"type": "object", "properties": {"incident_id": {"type": "string"}, "summary": {"type": "string", "maxLength": 2000}}, "required": ["incident_id", "summary"], "additionalProperties": false}, "sideEffect": "draft-only", "requiresApprovalForSubmission": true}
+      ]
+    }
+  ]
+}
+

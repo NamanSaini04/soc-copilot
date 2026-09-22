@@ -1,0 +1,15 @@
+project_name: Cybersecurity SOC Copilot
+retrieval_top_k: 3
+retrieval_min_score: 0.08
+human_approval_required: true
+allowed_data_classes:
+  - public
+  - synthetic
+  - lab-generated
+  - explicitly-authorized
+blocked_capabilities:
+  - exploitation
+  - malware-generation
+  - credential-theft
+  - security-control-bypass
+

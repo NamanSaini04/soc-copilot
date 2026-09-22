@@ -1,0 +1,6 @@
+[
+  {"alert_id":"ALT-001","expected_type":"authentication","expected_severity":"critical","expected_mitre":"T1078"},
+  {"alert_id":"ALT-002","expected_type":"phishing","expected_severity":"high","expected_mitre":"T1566"},
+  {"alert_id":"ALT-003","expected_type":"endpoint","expected_severity":"high","expected_mitre":"T1059.001"}
+]
+

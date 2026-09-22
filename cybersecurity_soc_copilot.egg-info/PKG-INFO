@@ -1,0 +1,23 @@
+Metadata-Version: 2.4
+Name: cybersecurity-soc-copilot
+Version: 0.1.0
+Summary: Defensive, evidence-grounded SOC investigation copilot
+Requires-Python: >=3.11
+Requires-Dist: fastapi<1,>=0.115
+Requires-Dist: uvicorn<1,>=0.30
+Requires-Dist: pydantic<3,>=2.8
+Requires-Dist: pandas<3,>=2.2
+Requires-Dist: scikit-learn<2,>=1.5
+Requires-Dist: streamlit<2,>=1.39
+Requires-Dist: plotly<7,>=5.24
+Requires-Dist: matplotlib<4,>=3.9
+Requires-Dist: reportlab<5,>=4.2
+Requires-Dist: mcp<2,>=1.2
+Provides-Extra: semantic
+Requires-Dist: sentence-transformers<6,>=3.0; extra == "semantic"
+Requires-Dist: faiss-cpu<2,>=1.8; extra == "semantic"
+Provides-Extra: dev
+Requires-Dist: pytest<9,>=8.3; extra == "dev"
+Requires-Dist: httpx<1,>=0.27; extra == "dev"
+Requires-Dist: pypdf<7,>=5; extra == "dev"
+Requires-Dist: ruff<1,>=0.7; extra == "dev"

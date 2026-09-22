@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.streamlit/
+tmp/
+reports/incidents/json/*.json
+!reports/incidents/json/.gitkeep
+.env
+

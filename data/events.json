@@ -1,0 +1,7 @@
+[
+  {"event_id":"E001","alert_id":"ALT-001","timestamp":"2026-09-15T08:10:12Z","source":"Synthetic IdP","user":"a.patel","device":"FIN-LT-042","message":"MFA challenge denied by user after failed login burst from 203.0.113.77","confidence":0.95},
+  {"event_id":"E002","alert_id":"ALT-001","timestamp":"2026-09-15T08:12:32Z","source":"Synthetic IdP","user":"a.patel","device":"FIN-LT-042","message":"Successful login from 203.0.113.77 using password authentication","confidence":0.95},
+  {"event_id":"E003","alert_id":"ALT-002","timestamp":"2026-09-15T10:04:45Z","source":"Synthetic Email Gateway","user":"m.chen","device":"HR-LT-017","message":"Message delivered with URL invoice-review.example","confidence":0.92},
+  {"event_id":"E004","alert_id":"ALT-003","timestamp":"2026-09-16T01:22:03Z","source":"Synthetic EDR","user":"svc-backup","device":"OPS-SRV-003","message":"powershell.exe launched with encoded command-line parameter","confidence":0.94}
+]
+

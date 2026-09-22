@@ -1,0 +1,42 @@
+[
+  {
+    "alert_id": "ALT-001",
+    "timestamp": "2026-09-15T08:12:00Z",
+    "source": "Synthetic SIEM",
+    "category": "authentication",
+    "title": "Repeated failed logins followed by success",
+    "user": "a.patel",
+    "device": "FIN-LT-042",
+    "src_ip": "203.0.113.77",
+    "indicator": "203.0.113.77",
+    "event_count": 14,
+    "asset_criticality": 4,
+    "description": "Fourteen failed authentication attempts from 203.0.113.77 were followed by a successful login to a finance user account."
+  },
+  {
+    "alert_id": "ALT-002",
+    "timestamp": "2026-09-15T10:05:00Z",
+    "source": "Synthetic Email Gateway",
+    "category": "phishing",
+    "title": "Suspicious invoice message",
+    "user": "m.chen",
+    "device": "HR-LT-017",
+    "indicator": "invoice-review.example",
+    "event_count": 3,
+    "asset_criticality": 3,
+    "description": "User received a message linking to invoice-review.example and reported the sender as unexpected."
+  },
+  {
+    "alert_id": "ALT-003",
+    "timestamp": "2026-09-16T01:22:00Z",
+    "source": "Synthetic EDR",
+    "category": "endpoint",
+    "title": "Encoded PowerShell execution",
+    "user": "svc-backup",
+    "device": "OPS-SRV-003",
+    "event_count": 2,
+    "asset_criticality": 5,
+    "description": "EDR observed PowerShell with an encoded command on a critical operations server."
+  }
+]
+

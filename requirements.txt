@@ -1,0 +1,3 @@
+-e .[dev]
+# Optional semantic embeddings: pip install -e .[semantic,dev]
+

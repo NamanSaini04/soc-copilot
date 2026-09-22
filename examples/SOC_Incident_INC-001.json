@@ -1,0 +1,180 @@
+{
+  "incident_id": "INC-001",
+  "alert": {
+    "alert_id": "ALT-001",
+    "timestamp": "2026-09-15T08:12:00Z",
+    "source": "Synthetic SIEM",
+    "category": "authentication",
+    "title": "Repeated failed logins followed by success",
+    "user": "a.patel",
+    "device": "FIN-LT-042",
+    "src_ip": "203.0.113.77",
+    "indicator": "203.0.113.77",
+    "event_count": 14,
+    "asset_criticality": 4,
+    "description": "Fourteen failed authentication attempts from 203.0.113.77 were followed by a successful login to a finance user account."
+  },
+  "severity": "critical",
+  "risk_score": 98,
+  "confidence": 0.74,
+  "status": "awaiting_analyst_review",
+  "alert_type": "authentication",
+  "evidence": [
+    {
+      "evidence_id": "EV-ALT-001-001",
+      "source": "Synthetic SIEM",
+      "observed_at": "2026-09-15T08:12:00Z",
+      "statement": "Fourteen failed authentication attempts from 203.0.113.77 were followed by a successful login to a finance user account.",
+      "confidence": 0.95,
+      "provenance": "uploaded_alert:ALT-001"
+    },
+    {
+      "evidence_id": "EV-ALT-001-002",
+      "source": "Synthetic IdP",
+      "observed_at": "2026-09-15T08:10:12Z",
+      "statement": "MFA challenge denied by user after failed login burst from 203.0.113.77",
+      "confidence": 0.95,
+      "provenance": "synthetic_log:E001"
+    },
+    {
+      "evidence_id": "EV-ALT-001-003",
+      "source": "Synthetic IdP",
+      "observed_at": "2026-09-15T08:12:32Z",
+      "statement": "Successful login from 203.0.113.77 using password authentication",
+      "confidence": 0.95,
+      "provenance": "synthetic_log:E002"
+    }
+  ],
+  "hypotheses": [
+    "The account may be compromised; confirmation requires identity-provider and endpoint evidence."
+  ],
+  "timeline": [
+    {
+      "timestamp": "2026-09-15T08:10:12+00:00",
+      "event": "MFA challenge denied by user after failed login burst from 203.0.113.77",
+      "source": "Synthetic IdP"
+    },
+    {
+      "timestamp": "2026-09-15T08:12:00+00:00",
+      "event": "Repeated failed logins followed by success",
+      "source": "Synthetic SIEM"
+    },
+    {
+      "timestamp": "2026-09-15T08:12:32+00:00",
+      "event": "Successful login from 203.0.113.77 using password authentication",
+      "source": "Synthetic IdP"
+    }
+  ],
+  "affected_users": [
+    "a.patel"
+  ],
+  "affected_systems": [
+    "FIN-LT-042"
+  ],
+  "iocs": [
+    "203.0.113.77"
+  ],
+  "mitre_attack": [
+    {
+      "technique_id": "T1078",
+      "name": "Valid Accounts",
+      "basis": "Authentication activity observed; mapping is provisional."
+    }
+  ],
+  "knowledge_context": [
+    "# Authentication Incident Playbook\n## Triage\nValidate alert timestamps, identity-provider source, user, source IP, authentication method, MFA result, device, and baseline behavior. A successful sign-in after repeated failures raises concern but is not proof of compromise.\n## Investigation\nCorrelate sign-in, MFA, endpoint, VPN, and cloud audit records. Confirm whether the user recognizes the activity. Preserve the original records and record query windows.\n## Containment\nAfter analyst authorization, revoke active sessions, reset credentials, require strong MFA, block a confirmed malicious indicator, and increase monitoring. Do not disable a business-critical account without considering operational impact."
+  ],
+  "citations": [
+    {
+      "source_id": "authentication_playbook:1",
+      "title": "Authentication Playbook",
+      "section": "Containment",
+      "score": 0.2363
+    }
+  ],
+  "recommendations": [
+    {
+      "action": "Collect and preserve relevant logs",
+      "rationale": "Increase evidentiary confidence before containment.",
+      "priority": "high",
+      "requires_approval": true
+    },
+    {
+      "action": "Review account sign-ins and MFA events",
+      "rationale": "Validate whether access was authorized.",
+      "priority": "high",
+      "requires_approval": true
+    },
+    {
+      "action": "Reset credentials and revoke sessions",
+      "rationale": "Contain suspected account compromise after analyst validation.",
+      "priority": "high",
+      "requires_approval": true
+    },
+    {
+      "action": "Consider host isolation",
+      "rationale": "Contain potential spread; business impact must be approved.",
+      "priority": "high",
+      "requires_approval": true
+    }
+  ],
+  "escalation": "Escalate to incident response",
+  "agent_trace": [
+    {
+      "agent": "triage_agent",
+      "timestamp": "2026-09-22T14:25:38.630775+00:00",
+      "summary": "critical / 93",
+      "inputs": [
+        "ALT-001"
+      ]
+    },
+    {
+      "agent": "investigation_agent",
+      "timestamp": "2026-09-22T14:25:38.630963+00:00",
+      "summary": "Correlated 3 evidence items",
+      "inputs": [
+        "ALT-001"
+      ]
+    },
+    {
+      "agent": "threat_intel_agent",
+      "timestamp": "2026-09-22T14:25:38.631353+00:00",
+      "summary": "1 approved demo-intel matches",
+      "inputs": [
+        "203.0.113.77"
+      ]
+    },
+    {
+      "agent": "rag_agent",
+      "timestamp": "2026-09-22T14:25:38.633624+00:00",
+      "summary": "Retrieved 1 knowledge chunks",
+      "inputs": [
+        "authentication_playbook:1"
+      ]
+    },
+    {
+      "agent": "risk_agent",
+      "timestamp": "2026-09-22T14:25:38.633650+00:00",
+      "summary": "Risk 98/100",
+      "inputs": [
+        "EV-ALT-001-001",
+        "EV-ALT-001-002",
+        "EV-ALT-001-003"
+      ]
+    },
+    {
+      "agent": "response_agent",
+      "timestamp": "2026-09-22T14:25:38.633689+00:00",
+      "summary": "Proposed 4 approval-gated actions",
+      "inputs": []
+    },
+    {
+      "agent": "mitre_mapper",
+      "timestamp": "2026-09-22T14:25:38.633726+00:00",
+      "summary": "Mapped 1 provisional techniques",
+      "inputs": []
+    }
+  ],
+  "analyst_approved": false,
+  "analyst_notes": ""
+}
