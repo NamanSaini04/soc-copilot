@@ -4,7 +4,7 @@ from datetime import datetime
 from enum import Enum
 from typing import Any, Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class Severity(str, Enum):
@@ -52,6 +52,13 @@ class Recommendation(BaseModel):
     requires_approval: bool = True
 
 
+class ReviewEvent(BaseModel):
+    reviewed_at: datetime
+    analyst: str
+    approved: bool
+    notes: str = ""
+
+
 class InvestigationResult(BaseModel):
     incident_id: str
     alert: Alert
@@ -74,10 +81,24 @@ class InvestigationResult(BaseModel):
     agent_trace: list[dict[str, Any]]
     analyst_approved: bool = False
     analyst_notes: str = ""
+    review_history: list[ReviewEvent] = Field(default_factory=list)
 
 
 class ApprovalRequest(BaseModel):
-    analyst: str
+    analyst: str = Field(min_length=2, max_length=80)
     approved: bool
-    notes: str = ""
+    notes: str = Field(default="", max_length=2000)
+
+    @field_validator("analyst")
+    @classmethod
+    def nonblank_analyst(cls, value: str) -> str:
+        value = value.strip()
+        if len(value) < 2:
+            raise ValueError("Please enter the reviewing analyst's name")
+        return value
+
+    @field_validator("notes")
+    @classmethod
+    def clean_notes(cls, value: str) -> str:
+        return value.strip()
 
