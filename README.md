@@ -2,7 +2,9 @@
 
 An offline-capable, defensive SOC investigation assistant built with Python, FastAPI, Streamlit, retrieval, MCP servers, typed agent hand-offs, human approval, evaluation, and PDF reporting.
 
-> Portfolio status: working MVP on synthetic data. It does **not** execute containment, query production systems, or claim production detection accuracy.
+> **Branch status:** End-to-end synthetic-data **functional demo**, with isolated Streamlit sessions, an analyst review audit trail, PDF and JSON exports, token-gated local API, and automated acceptance tests. No real-world security actions are executed.
+>
+> **Important:** This is not a production SOC service or a validated threat-detection model. The current labelled evaluation has **3 synthetic cases**. The public demo still needs to be deployed and its URL verified.
 
 ## What it demonstrates
 
@@ -27,6 +29,16 @@ flowchart TD
     F --> H[Human approval]
     H --> I[Incident JSON + PDF]
 ```
+
+## Recruiter demo and deployment
+
+**Quick path:** run `streamlit run dashboard/streamlit_app.py`, select any sample alert, click **Run investigation**, inspect citations and evidence, approve or reject the recommendations (this only records a decision), and download PDF or JSON.
+
+- [Deployment and security instructions](docs/demo_deployment.md)
+- [Defensive security boundaries](SECURITY.md)
+- [Project evaluation and labelled synthetic fixtures](evaluation/labelled_cases.json)
+**Public Streamlit demo (URL supplied by project owner):** https://soc-copilot-8bx9rwb7hdnqydkytryatf.streamlit.app/  
+*Availability and the deployed Git branch have not yet been independently checked. Use only synthetic fixture alerts.*
 
 ## Quick start
 

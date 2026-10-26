@@ -1,0 +1,9 @@
+# Streamlit Community Cloud: packages needed for the public, synthetic-only dashboard.
+# This file is next to dashboard/streamlit_app.py so the Cloud install does not
+# require local MCP servers, FastAPI, pytest, or other development-only extras.
+streamlit>=1.39,<2
+pandas>=2.2,<3
+plotly>=5.24,<7
+pydantic>=2.8,<3
+scikit-learn>=1.5,<2
+reportlab>=4.2,<5

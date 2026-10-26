@@ -13,7 +13,13 @@
 | 9. Incident PDF | Recruiter-readable case output | Render and visual inspection | Readable multi-page PDF | Complete |
 | 10. Evaluation | Instrument classification, mapping, citations, gating | Labelled cases | Machine-readable results with caveat | Complete baseline |
 | 11-12. Technical report | Explain design, results, risk, limitations | Text and PDF checks | Professional portfolio PDF | Complete |
-| 13. Hardening/deploy | CI, auth, secrets, rate limits, persistent DB | Integration/security tests | Required before public deployment | Planned |
+| 13a. Functional synthetic demo | Per-visitor state, review history, token-gated local API, PDF/JSON downloads, Streamlit UI | End-to-end, API security and headless UI tests | All bundled alerts can be investigated and reviewed without real security actions | Complete in feature branch |
+| 13b. Public demo | Streamlit Community Cloud, synthetic fixtures only | Independent-browser smoke test and downloadable reports | A verified public Streamlit URL that loads reliably | Not yet deployed |
+| 14. Production hardening | OIDC, tenant/role scopes, secrets, immutable audit, rate limits, persistent DB | Integration, security and load tests | Needed before any production integration | Planned |
+
+## Important distinction
+
+A **functional synthetic demo** is not a production SOC product. The three labelled cases and headless UI tests verify workflow plumbing, not real-world threat-detection performance. Public Streamlit hosting is a separate, user-authorized publishing step; see [demo deployment instructions](demo_deployment.md).
 
 ## Recommended next iteration
 
