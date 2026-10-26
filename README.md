@@ -37,7 +37,8 @@ flowchart TD
 - [Deployment and security instructions](docs/demo_deployment.md)
 - [Defensive security boundaries](SECURITY.md)
 - [Project evaluation and labelled synthetic fixtures](evaluation/labelled_cases.json)
-- **Public Streamlit dashboard:** not deployed / not verified yet. No public URL is claimed here.
+**Public Streamlit demo (URL supplied by project owner):** https://soc-copilot-8bx9rwb7hdnqydkytryatf.streamlit.app/  
+*Availability and the deployed Git branch have not yet been independently checked. Use only synthetic fixture alerts.*
 
 ## Quick start
 
