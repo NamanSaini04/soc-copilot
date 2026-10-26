@@ -41,7 +41,7 @@ def test_all_synthetic_alerts_investigate_and_export(alert_id, tmp_path):
 
     pdf_text = "\n".join(page.extract_text() or "" for page in PdfReader(pdf_path).pages)
     assert result.incident_id in pdf_text
-    assert "SOC INCIDENT INVESTIGATION REPORT" in pdf_text
+    assert "SOC INCIDENT INVESTIGATION REPORT" in " ".join(pdf_text.split())
 
     exported = result.model_validate_json(result.model_dump_json(indent=2))
     assert exported.alert.alert_id == alert_id
