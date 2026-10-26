@@ -50,13 +50,13 @@ with queue_tab:
     left, right = st.columns(2)
     left.plotly_chart(
         px.bar(frame.groupby("category", as_index=False).size(), x="category", y="size", title="Alerts by category"),
-        use_container_width=True,
+        width="stretch",
     )
     right.plotly_chart(
         px.histogram(frame, x="asset_criticality", title="Asset criticality"),
-        use_container_width=True,
+        width="stretch",
     )
-    st.dataframe(frame[["alert_id", "timestamp", "category", "title", "source", "asset_criticality"]], use_container_width=True, hide_index=True)
+    st.dataframe(frame[["alert_id", "timestamp", "category", "title", "source", "asset_criticality"]], width="stretch", hide_index=True)
 
 with investigation_tab:
     st.markdown("### Choose an alert to investigate")
@@ -88,11 +88,11 @@ with investigation_tab:
         st.markdown("#### Evidence and timeline")
         st.dataframe(
             pd.DataFrame([e.model_dump(mode="json") for e in result.evidence]),
-            use_container_width=True,
+            width="stretch",
             hide_index=True,
         )
         with st.expander("Incident timeline and observed indicators"):
-            st.dataframe(pd.DataFrame(result.timeline), use_container_width=True, hide_index=True)
+            st.dataframe(pd.DataFrame(result.timeline), width="stretch", hide_index=True)
             st.write("Indicators extracted from provided fixtures:", ", ".join(result.iocs) or "None")
 
         st.markdown("#### Hypotheses — not confirmed facts")
@@ -103,20 +103,20 @@ with investigation_tab:
         with knowledge_col:
             st.markdown("#### Playbook citations")
             if result.citations:
-                st.dataframe(pd.DataFrame([c.model_dump() for c in result.citations]), use_container_width=True, hide_index=True)
+                st.dataframe(pd.DataFrame([c.model_dump() for c in result.citations]), width="stretch", hide_index=True)
             else:
                 st.caption("No retrieved knowledge chunk met the minimum relevance score.")
         with mapping_col:
             st.markdown("#### Provisional MITRE ATT&CK mapping")
             if result.mitre_attack:
-                st.dataframe(pd.DataFrame(result.mitre_attack), use_container_width=True, hide_index=True)
+                st.dataframe(pd.DataFrame(result.mitre_attack), width="stretch", hide_index=True)
             else:
                 st.caption("Insufficient evidence for an ATT&CK mapping.")
 
         st.markdown("#### Proposed defensive recommendations (never executed)")
         st.dataframe(
             pd.DataFrame([r.model_dump() for r in result.recommendations]),
-            use_container_width=True, hide_index=True,
+            width="stretch", hide_index=True,
         )
 
         with st.form("analyst_review"):
@@ -138,11 +138,11 @@ with investigation_tab:
             st.markdown("#### Review audit history (session-only)")
             st.dataframe(
                 pd.DataFrame([event.model_dump(mode="json") for event in result.review_history]),
-                use_container_width=True, hide_index=True,
+                width="stretch", hide_index=True,
             )
 
         with st.expander("Auditable agent trace"):
-            st.dataframe(pd.DataFrame(result.agent_trace), use_container_width=True, hide_index=True)
+            st.dataframe(pd.DataFrame(result.agent_trace), width="stretch", hide_index=True)
 
         st.markdown("#### Download reproducible incident evidence")
         with TemporaryDirectory(prefix="soc-demo-") as temp_dir:
