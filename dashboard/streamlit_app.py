@@ -12,9 +12,9 @@ import streamlit as st
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from app.models import ApprovalRequest  # noqa: E402
-from app.service import IncidentService  # noqa: E402
-from reports.incident_pdf import build_incident_pdf  # noqa: E402
+from app.models import ApprovalRequest
+from app.service import IncidentService
+from reports.incident_pdf import build_incident_pdf
 
 st.set_page_config(
     page_title="Cybersecurity SOC Copilot | Defensive Demo",
